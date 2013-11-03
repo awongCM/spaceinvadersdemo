@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Space Invaders</title>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+  <script src='js/sprite.js'></script>
+  <script src='js/game-logic.js'></script>
+  <script src='js/level.js'></script>
+
+
+<!-- <style>
+      #gameboard { background-color:black; }
+      .game-wrapper { margin:0 auto; width: 500px; }
+  </style> -->
+
+  
+</head>
+<body>
+  <div class="game-wrapper">
+    <canvas id='gameboard' width='500' height='500'></canvas>
+  </div>
+  <script>
+    var canvas = document.getElementById('gameboard');
+    var context = canvas.getContext("2d");
+    context.rect(0, 0, canvas.width, canvas.height);
+
+    // add linear gradient
+    var grd = context.createLinearGradient(0, 0, 0, canvas.height);
+    // light gray
+    grd.addColorStop(0, '#000000');
+
+    // black
+    grd.addColorStop(1, '#d3d3d3');   
+    context.fillStyle = grd;
+    context.fill();
+  </script>
+</body>
+</html>
