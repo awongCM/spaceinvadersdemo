@@ -65,6 +65,7 @@ var Sprites = new function() {
 
   this.draw = function(canvas,sprite,x,y,frame) {
     var s = this.map[sprite];
+    console.log("Sprite Type: "+sprite);
     if(!frame) frame = 0;
     canvas.drawImage(this.image, s.sx + frame * s.w, s.sy, s.w, s.h, x,y, s.w, s.h);
   };
@@ -156,6 +157,10 @@ var GameBoard = function GameBoard(level_number) {
     this.player = this.addSprite('player', // Sprite
                                  Game.width/2, // X
                                  Game.height - Sprites.map['player'].h - 15); // Y
+    this.shield = this.addSprite('shield',  //Sprite
+                                  Game.width/2,  //X
+                                 Game.height - Sprites.map['shield'].h - 50); //Y
+    
 
     var flock = this.add(new AlienFlock());
     for(var y=0,rows=level.length;y<rows;y++) {
@@ -169,6 +174,8 @@ var GameBoard = function GameBoard(level_number) {
         }
       }
     }
+
+    
   };
 
   this.nextLevel = function() { 

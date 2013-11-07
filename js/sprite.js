@@ -42,6 +42,29 @@ var AlienFlock = function AlienFlock() {
 
 }
 
+var Shield = function Shield(opts){
+  this.dx = 10;
+  this.dy = 0;
+
+}
+
+Shield.prototype.draw = function(canvas){
+  Sprites.draw(canvas, this.name, this.x, this.y);
+}
+
+Shield.prototype.hit = function(){
+  GameAudio.play('die');
+  this.board.remove(this);
+}
+
+Shield.prototype.step = function(){
+   //Do nothing!
+}
+
+Shield.prototype.die = function(){
+  //Do nothing for now!
+  //TODO: wat happens if it hits...
+}
 
 
 var Alien = function Alien(opts) {
