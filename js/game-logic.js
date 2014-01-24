@@ -157,10 +157,15 @@ var GameBoard = function GameBoard(level_number) {
     this.player = this.addSprite('player', // Sprite
                                  Game.width/2, // X
                                  Game.height - Sprites.map['player'].h - 15); // Y
-    this.shield = this.addSprite('shield',  //Sprite
-                                  Game.width/2,  //X
-                                 Game.height - Sprites.map['shield'].h - 50); //Y
-    
+    this.shield = this.addSprite('shield1',  //Sprite
+                                  Game.width/2 - 70,  //X
+                                 Game.height - Sprites.map['shield1'].h - 50); //Y
+    this.shield = this.addSprite('shield2',  //Sprite
+                                  Game.width/2 - 10,  //X
+                                 Game.height - Sprites.map['shield2'].h - 50); //Y
+    this.shield = this.addSprite('shield3',  //Sprite
+                                  Game.width/2 + 50,  //X
+                                 Game.height - Sprites.map['shield3'].h - 50); //Y
 
     var flock = this.add(new AlienFlock());
     for(var y=0,rows=level.length;y<rows;y++) {

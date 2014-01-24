@@ -63,7 +63,7 @@ Shield.prototype.step = function(){
 
 Shield.prototype.die = function(){
   //Do nothing for now!
-  //TODO: wat happens if it hits...
+  //TODO: what happens if it hits...
 }
 
 
