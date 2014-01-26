@@ -1,5 +1,6 @@
+
 var Game = new function() {                                                                  
-  var KEY_CODES = { 37:'left', 39:'right', 32 :'fire', 43:'speedup', 45: 'speeddown' };
+  var KEY_CODES = { 37:'left', 38:'up', 39:'right', 40:'down', 32 :'fire', 43:'speedup', 45: 'speeddown' };
   this.keys = {};
 
   var dx = 30;
@@ -46,6 +47,7 @@ var Game = new function() {
     //update the new speed each time user toggles speed onscreen
     defaultspeed = dx/dy;
 
+    Game.board.input(defaultspeed);
     Game.board.step(defaultspeed); 
     Game.board.render(Game.canvas);
     Game.displaySpeed(Game.canvas, defaultspeed);
@@ -65,7 +67,7 @@ var Sprites = new function() {
 
   this.draw = function(canvas,sprite,x,y,frame) {
     var s = this.map[sprite];
-    console.log("Sprite Type: "+sprite);
+    //console.log("Sprite Type: "+sprite);
     if(!frame) frame = 0;
     canvas.drawImage(this.image, s.sx + frame * s.w, s.sy, s.w, s.h, x,y, s.w, s.h);
   };
@@ -73,19 +75,51 @@ var Sprites = new function() {
 
 var GameScreen = function GameScreen(text,text2,callback) {
 
+  this.title = "Space Invaders";
+
+  var menus = new Array();
+  menus[0] = "Play";
+  menus[1] = "Settings";
+  menus[2] = "Help";
+  menus[3] = "Credits";
+
+  gameMenu = new GameMenu(this.title, menus, 200, 40, 50, Game.width, Game.height);
+
+  this.input = function(dt){
+    if(Game.keys['up'] && callback){
+      //callback();
+      gameMenu.Input(dt);
+    }
+    if(Game.keys['down'] && callback){
+      //callback();
+      gameMenu.Input(dt);
+    }
+  }
+
+
   this.step = function(dt) {
     if(Game.keys['fire'] && callback) callback();
   };
 
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
-    canvas.font = "bold 40px arial";
+    /*canvas.font = "bold 40px arial";
     var measure = canvas.measureText(text);  
     canvas.fillStyle = "#FFFFFF";
-    canvas.fillText(text,Game.width/2 - measure.width/2,Game.height/2);
-    canvas.font = "bold 20px arial";
-    var measure2 = canvas.measureText(text2);
-    canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
+    
+    canvas.fillText(text, Game.width/2 - measure.width/2, Game.height/4);
+
+    canvas.font = "bold 25px arial";
+    //var measure2 = canvas.measureText(text2);
+    //canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
+    
+    var menuy = 0;
+    for(var i=0; i< menus.length;i++){
+        canvas.fillText(menus[i], Game.width/2 - canvas.measureText(menus[i]).width/2, Game.height/2 + menuy);
+        menuy = menuy + 30;
+    }*/
+
+    gameMenu.Render(canvas);
   };
 
 };
@@ -109,6 +143,9 @@ var GameBoard = function GameBoard(level_number) {
     return sprite;
   };
   
+  this.input = function(dt){
+    //For now, nothing...
+  }
 
   this.iterate = function(func) {
      for(var i=0,len=this.objects.length;i<len;i++) {
