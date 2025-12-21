@@ -153,16 +153,113 @@ await Promise.all([
 - Menu navigation input works but callbacks need refinement
 - AlienFlock.createNewBoard needs proper GameBoard injection
 
-## 🔧 Future Enhancements (Optional)
+## 🔧 Future Enhancements
+
+### Phase 2.5 - Polish (No Framework)
 
 - [ ] Add responsive canvas scaling for mobile
 - [ ] Implement Web Audio API for advanced sound
-- [ ] Add particle effects for explosions
-- [ ] Create proper state management for complex features
+- [ ] Add particle effects for explosions (Canvas-based)
 - [ ] Add touch controls for mobile devices
 - [ ] Implement high score persistence (localStorage)
 - [ ] Add pause menu
 - [ ] Add sound toggle
+- [ ] Fix menu navigation callbacks
+- [ ] Implement shield collision detection
+
+### Phase 3A - Phaser 3 Integration (Optional)
+
+**When to consider:** If you want to add complex features like physics, particle systems, tilemaps, or mobile deployment.
+
+**Migration steps:**
+
+1. Install Phaser: `npm install phaser`
+2. Convert `GameBoard` to Phaser Scene
+3. Convert entities to Phaser Sprites/GameObjects
+4. Use Phaser texture atlas for sprite sheet
+5. Leverage Phaser physics engine for collisions
+6. Add particle effects for explosions
+7. Implement mobile touch controls via Phaser
+
+**Pros:**
+
+- ✅ Battle-tested game framework
+- ✅ Extensive documentation and examples
+- ✅ Built-in physics, particles, animations
+- ✅ Mobile-friendly out of the box
+- ✅ Large community
+
+**Cons:**
+
+- ❌ Larger bundle size (~1MB vs 15KB)
+- ❌ Steeper learning curve
+- ❌ More complex architecture
+- ❌ Might be overkill for simple games
+
+### Phase 3B - PixiJS Integration (Alternative)
+
+**When to consider:** If you need high-performance WebGL rendering with 60+ sprites, advanced visual effects, or smooth mobile performance.
+
+**Migration steps:**
+
+1. Install PixiJS: `npm install pixi.js`
+2. Initialize PixiJS Application
+3. Convert sprite sheet to PixiJS TextureAtlas
+4. Convert entities to PixiJS Sprites
+5. Implement game loop with `app.ticker.add()`
+6. Add sprite filters (glow, blur, tint effects)
+7. Optimize with sprite batching
+
+**Pros:**
+
+- ✅ Blazing fast WebGL renderer
+- ✅ Canvas fallback for compatibility
+- ✅ Smaller than Phaser (~500KB)
+- ✅ More flexible/lower-level
+- ✅ Great for visual effects
+
+**Cons:**
+
+- ❌ No built-in physics engine
+- ❌ Less game-specific features
+- ❌ Requires more manual work
+- ❌ Smaller ecosystem than Phaser
+
+### Phase 3C - Konva.js Integration (Minimal Change)
+
+**When to consider:** If you want a Canvas abstraction layer without major architectural changes.
+
+**Migration steps:**
+
+1. Install Konva: `npm install konva`
+2. Wrap canvas in Konva Stage/Layer
+3. Convert draw calls to Konva shapes
+4. Add event handling via Konva
+5. Optional: Add drag-and-drop, animations
+
+**Pros:**
+
+- ✅ Minimal learning curve
+- ✅ Preserves Canvas-based approach
+- ✅ Small bundle size (~150KB)
+- ✅ Easy event handling
+
+**Cons:**
+
+- ❌ Not specifically for games
+- ❌ No physics or particle systems
+- ❌ Limited game-specific features
+
+### Recommendation
+
+**Stay vanilla** (Phase 2.5) unless you have specific needs:
+
+- Need physics? → Phaser 3
+- Need visual effects? → PixiJS
+- Need simplicity? → Stay vanilla
+- Need mobile? → Phaser 3 or PixiJS
+
+Your current codebase is well-structured for migration. The modular TypeScript architecture makes it easy to swap rendering/physics systems later without rewriting game logic.
 
 ## 📝 Development Notes
 
