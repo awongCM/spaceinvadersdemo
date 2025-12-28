@@ -1,0 +1,23 @@
+# Build outputs
+legacy/dist/
+modern/dist/
+
+# Dependencies
+node_modules/
+legacy/node_modules/
+modern/node_modules/
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

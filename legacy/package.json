@@ -1,0 +1,11 @@
+{
+  "name": "legacy-space-invaders",
+  "version": "1.0.0",
+  "description": "Legacy Space Invaders - Vanilla JavaScript Edition",
+  "scripts": {
+    "build": "node build.js",
+    "clean": "rm -rf dist"
+  },
+  "author": "",
+  "license": "MIT"
+}

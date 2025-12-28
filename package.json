@@ -1,0 +1,17 @@
+{
+  "name": "space-invaders-comparison",
+  "version": "1.0.0",
+  "description": "Space Invaders - Legacy vs Modern Implementation",
+  "scripts": {
+    "install:all": "cd legacy && npm install && cd ../modern && npm install",
+    "build": "./build.sh",
+    "build:legacy": "cd legacy && npm run build",
+    "build:modern": "cd modern && npm run build",
+    "dev:legacy": "cd legacy && python3 -m http.server 8080",
+    "dev:modern": "cd modern && npm run dev",
+    "serve": "python3 -m http.server 8000",
+    "clean": "rm -rf legacy/dist modern/dist"
+  },
+  "author": "",
+  "license": "MIT"
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Invaders - Classic vs Modern</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .header {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-bottom: 3px solid #00ff00;
+    }
+
+    .header h1 {
+      font-size: 3em;
+      color: #00ff00;
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+    }
+
+    .header p {
+      font-size: 1.2em;
+      color: #ccc;
+      margin-top: 10px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      padding: 30px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .game-section {
+      flex: 1;
+      min-width: 500px;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      border: 2px solid #00ff00;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .game-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 30px rgba(0, 255, 0, 0.5);
+    }
+
+    .game-header {
+      background: rgba(0, 255, 0, 0.2);
+      padding: 20px;
+      border-bottom: 2px solid #00ff00;
+    }
+
+    .game-header h2 {
+      font-size: 1.8em;
+      color: #00ff00;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px #00ff00;
+    }
+
+    .game-header .tech-stack {
+      font-size: 0.9em;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    .game-header .description {
+      font-size: 0.95em;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .game-frame-container {
+      position: relative;
+      width: 100%;
+      height: 550px;
+      background: #000;
+    }
+
+    .game-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2em;
+      color: #00ff00;
+      text-align: center;
+    }
+
+    .controls-info {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px 20px;
+      border-top: 1px solid #00ff00;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+
+    .controls-info strong {
+      color: #00ff00;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: #999;
+      font-size: 0.9em;
+      margin-top: 30px;
+      border-top: 1px solid rgba(0, 255, 0, 0.3);
+    }
+
+    @media (max-width: 1100px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .game-section {
+        min-width: auto;
+        max-width: 600px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .game-section {
+        min-width: auto;
+      }
+
+      .game-frame-container {
+        height: 450px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🚀🚀👾👾 SPACE INVADERS 👾👾🚀🚀</h1>
+    <p>Experience the classic arcade game in two implementations</p>
+  </div>
+
+  <div class="container">
+    <!-- Legacy Game -->
+    <div class="game-section">
+      <div class="game-header">
+        <h2>Legacy Edition</h2>
+        <div class="tech-stack">🕹️ Vanilla JavaScript + jQuery + Canvas API</div>
+        <div class="description">
+          The original implementation using classic JavaScript patterns. Features sprite-based rendering, 
+          collision detection, and the classic Space Invaders gameplay.
+        </div>
+      </div>
+      <div class="game-frame-container">
+        <div class="loading">Loading Legacy Game...</div>
+        <iframe class="game-frame" src="legacy/dist/index.html" title="Legacy Space Invaders"></iframe>
+      </div>
+      <div class="controls-info">
+        <strong>Controls:</strong> Arrow Keys to move, Space to fire<br>
+        <strong>Debug:</strong> + to speed up, - to slow down
+      </div>
+    </div>
+
+    <!-- Modern Game -->
+    <div class="game-section">
+      <div class="game-header">
+        <h2>Modern Edition</h2>
+        <div class="tech-stack">⚡ TypeScript + Vite + Modern ES6+ Modules</div>
+        <div class="description">
+          Modern refactored version using TypeScript, modular architecture, and contemporary 
+          web development practices. Same gameplay, cleaner code structure.
+        </div>
+      </div>
+      <div class="game-frame-container">
+        <div class="loading">Loading Modern Game...</div>
+        <iframe class="game-frame" src="modern/dist/index.html" title="Modern Space Invaders"></iframe>
+      </div>
+      <div class="controls-info">
+        <strong>Controls:</strong> Arrow Keys to move, Space to fire<br>
+        <strong>Features:</strong> TypeScript type safety, modular design
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Compare the implementations side-by-side • Both games run independently • Choose your favorite!</p>
+  </div>
+
+  <script>
+    // Hide loading indicators once iframes load
+    document.querySelectorAll('.game-frame').forEach(iframe => {
+      iframe.addEventListener('load', function() {
+        const loading = this.parentElement.querySelector('.loading');
+        if (loading) {
+          loading.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
