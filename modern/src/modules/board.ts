@@ -138,6 +138,11 @@ export class GameBoard implements IGameBoard {
 
     // Add alien flock
     const flock = this.add(new AlienFlock(this.game, this.audio)) as AlienFlock;
+
+    // inject factory so the flock can create a new GameBoard for the next level
+    (flock as any).createNewBoard = (level: number): GameBoard => {
+      return new GameBoard(this.game, this.audio, this.levelData, level);
+    };
     
     for (let y = 0; y < level.length; y++) {
       for (let x = 0; x < level[y].length; x++) {
