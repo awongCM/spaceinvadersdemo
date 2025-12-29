@@ -108,10 +108,10 @@ async function main(): Promise<void> {
     // Load assets in parallel
     await Promise.all([
       audioManager.load({
-        fire: '/media/laser.ogg',
-        die: '/media/explosion.ogg'
+        fire: './media/laser.ogg',
+        die: './media/explosion.ogg'
       }),
-      spriteRenderer.load('/images/sprites.png', spriteData)
+      spriteRenderer.load('./images/sprites.png', spriteData)
     ]);
 
     // Initialize game

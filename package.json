@@ -1,7 +1,7 @@
 {
-  "name": "space-invaders-comparison",
+  "name": "space-invaders-demo",
   "version": "1.0.0",
-  "description": "Space Invaders - Legacy vs Modern Implementation",
+  "description": "Space Invaders Demo - Legacy vs Modern Implementation",
   "scripts": {
     "install:all": "cd legacy && npm install && cd ../modern && npm install",
     "build": "./build.sh",
