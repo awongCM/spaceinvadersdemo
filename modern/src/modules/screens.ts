@@ -4,6 +4,7 @@
 
 import { game } from './game';
 import { GameMenu } from './menu';
+import { HelpScreen } from './help-screen';
 import type { GameContext, GameBoard } from './types';
 
 export class GameScreen implements GameBoard {
@@ -61,8 +62,24 @@ export class GameScreen implements GameBoard {
   }
 
   step(dt: number): void {
-    if (this.gameContext.keys['fire'] && this.callback) {
-      this.callback();
+    if (this.gameContext.keys['fire']) {
+      const idx = this.gameMenu.getSelectedItemIndex();
+
+      if (idx === 0 && this.callback) {
+        this.callback();
+      } else if (idx === 2) {
+        const lines = [
+          'Left Arrow: Move Left',
+          'Right Arrow: Move Right',
+          'Space: Fire',
+          '+ : Speed Up',
+          '- : Speed Down'
+        ];
+
+        this.gameContext.loadBoard(
+          new HelpScreen(this.gameContext, 'Help — Controls', lines, () => this.gameContext.loadBoard(this))
+        );
+      }
     }
   }
 

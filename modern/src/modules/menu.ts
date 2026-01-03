@@ -61,4 +61,9 @@ export class GameMenu {
         (this.selectedItemIndex + 1) % this.menuitems.length;
     }
   }
+  
+  // Expose currently selected index for external boards
+  getSelectedItemIndex(): number {
+    return this.selectedItemIndex;
+  }
 }

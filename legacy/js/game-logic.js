@@ -83,42 +83,35 @@ var GameScreen = function GameScreen(text,text2,callback) {
   menus[2] = "Help";
   menus[3] = "Credits";
 
+
   gameMenu = new GameMenu(this.title, menus, 200, 40, 50, Game.width, Game.height);
+  var gameScreen = this;
+  
 
   this.input = function(dt){
     if(Game.keys['up'] && callback){
-      //callback();
       gameMenu.Input(dt);
     }
     if(Game.keys['down'] && callback){
-      //callback();
       gameMenu.Input(dt);
     }
   }
 
 
   this.step = function(dt) {
-    if(Game.keys['fire'] && callback) callback();
+    if(Game.keys['fire'] && callback) {
+      var idx = gameMenu.selectedItemIndex;
+
+      if (idx == 0) {
+        callback();
+      } else if (idx == 2) {
+        Game.loadBoard(new HelpScreen('Help - Controls', function() { Game.loadBoard(gameScreen); }));
+      }
+    }
   };
 
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
-    /*canvas.font = "bold 40px arial";
-    var measure = canvas.measureText(text);  
-    canvas.fillStyle = "#FFFFFF";
-    
-    canvas.fillText(text, Game.width/2 - measure.width/2, Game.height/4);
-
-    canvas.font = "bold 25px arial";
-    //var measure2 = canvas.measureText(text2);
-    //canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
-    
-    var menuy = 0;
-    for(var i=0; i< menus.length;i++){
-        canvas.fillText(menus[i], Game.width/2 - canvas.measureText(menus[i]).width/2, Game.height/2 + menuy);
-        menuy = menuy + 30;
-    }*/
-
     gameMenu.Render(canvas);
   };
 
